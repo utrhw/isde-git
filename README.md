@@ -1,14 +1,13 @@
-# Exercise - October 2019
+# Exercise - Working with Git
 
 Each working group must implement the functions illustrated
- in the previous lessons regarding the loading of MNIST DIGITS dataset
+ in the previous lessons regarding the loading of MNIST digit dataset
  and the computation of the centroids using Git tools for shared development.
 
 #### The goal is to pass the automated tests setup in the Gitlab project for `develop` branch and push to `production`.
 
 If all the functions have been correctly implemented, you will find a `passed` green badge
- under the CI/CD -> Pipelines menu on the left of the gitlab.com project page.
-If the tests are failing, a red `failed` badge will be displayed in the same page.
+ under GitHub activities. If the tests are failing, a red `failed` badge will be displayed.
 
 In particular each group must develop:
 - `load_mnist(csv_filename)`, load the MNIST dataset (available in `data/mnist_data.csv`)
