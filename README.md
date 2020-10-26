@@ -1,1 +1,124 @@
-# isde-git
+# Exercise - October 2019
+
+Each working group must implement the functions illustrated
+ in the previous lessons regarding the loading of MNIST DIGITS dataset
+ and the computation of the centroids using Git tools for shared development.
+
+#### The goal is to pass the automated tests setup in the Gitlab project for `develop` branch and push to `production`.
+
+If all the functions have been correctly implemented, you will find a `passed` green badge
+ under the CI/CD -> Pipelines menu on the left of the gitlab.com project page.
+If the tests are failing, a red `failed` badge will be displayed in the same page.
+
+In particular each group must develop:
+- `load_mnist(csv_filename)`, load the MNIST dataset (available in `data/mnist_data.csv`)
+- `split_data(x, y, fract_tr=0.5)`, split data (return 2 sets, training and test)
+- `NMC.fit(x, y)`, compute the average centroid for each class for training set
+- `NMC.predict(x)`, predict the class of each sample
+
+**All functions must be added to the `fun_utils.py` script**,
+ which already contains the signature of the required functions.
+ 
+Tests are available inside `tests/test.py` script.
+
+By default the following libraries can be used:
+ - numpy
+ - scikit-learn
+ - matplotlib
+ - pandas
+
+Change the `requirements.txt` file by adding the name of any new dependency if necessary.
+
+### Workflow details:
+1. The team leader *only* should fork the current project and provide the 
+ repository url to other team members. The team leader must also add other team members
+ to his project using the Settings -> Members menu of the gitlab project. Members should
+ be added with **Maintainer** role. All team members can now clone the project locally.
+2. Each group should **discuss** how to develop each function
+ (example: if any extra function is needed, what should return, ...).
+3. Each group should then **discuss** which function each team member should implement.
+4. Development of each function must be done in a **specific branch**,
+ which must be pushed to the remote after creation.
+ **No direct commits into the `develop` branch**
+5. Each team member is suggested to commit local changes to remote
+ as often as possible, so that other team members can see the progress
+ on the code via the gitlab.com project page.
+6. During the development, team members are encouraged to discuss code
+ implementation and possible problems.
+7. If needed, changes from other feature branches can be merged into a specific feature branch.
+ Use any Git tool needed to correctly integrate the changes from multiple branches.
+8. After the development of a specific feature has been completed, 
+ the relative branch should be merged into `develop`.
+9. The CI/CD -> Pipelines should now be consulted to see the result of the automated tests.
+ Depending on the load of the test runners of gitlab.com, the pipeline could show 
+ the `pending` status for *quite a while*. Just wait until a runner picked the job.
+ As an alternative, the test script can be manually run by calling `PYTHONPATH=. python tests/test.py`.
+10. If any change to the code is necessary, should be developed in the branch
+ relative to the specific feature and merged into master to see if tests are then passing.
+11. When all tests are passing, from branch `develop` the `production` branch should be created.
+ The CI/CD tests will be run for `production` branch too and **must succeed**.
+12. When all tests are passing **for `production`** branch, the last commit in that branch
+ should be tagged as `v1.0`.
+
+
+## Details about functions and variables
+Common variables:
+- y: labels (one for each image) (numpy array)
+- x: set of images. numpy array of size (nImages, nFeatures). Each row represents an image.
+
+```python
+load_mnist(csv_filename):
+    """Load the MNIST dataset.
+    
+    input:
+        csv_filename: string with the path to the dataset to load
+    
+    output:    
+        X: set of images (numpy array)
+        y: labels (numpy array)
+
+    """
+
+split_data(x, y, fract_tr):
+    """Split the data X,y into two random subsets.
+    
+    input:
+        x: set of images
+        y: labels
+        fract_tr: float, percentage of samples to put in the training set.
+            If necessary, number of samples in the training set is rounded to
+            the lowest integer number.
+    
+    output:
+        Xtr: set of images (numpy array, training set)
+        Xts: set of images (numpy array, test set)
+        ytr: labels (numpy array, training set)
+        yts: labels (numpy array, test set)
+    
+    """
+
+
+NMC.fit(x, y):
+    """Compute the average centroid for each class.
+
+    This function should populate the `._centroids` attribute
+    with a numpy array of shape (num_classes, num_features).
+    
+    input:
+        x: set of images (training set, numpy array)
+        y: labels (training set, numpy array)
+    
+    """
+
+NMC.predict(x):
+    """Predict the class of each input.
+    
+    input:
+        x: set of images (test set, numpy array)
+
+    output:
+        y: labels (numpy array)
+    
+    """
+
+```
