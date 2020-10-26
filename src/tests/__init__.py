@@ -1,1 +1,1 @@
-from .test1 import TestNMC
+from .test_nmc import TestNMC
