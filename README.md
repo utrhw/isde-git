@@ -1,14 +1,13 @@
-# Exercise - October 2019
+# Exercise - Working with Git
 
 Each working group must implement the functions illustrated
- in the previous lessons regarding the loading of MNIST DIGITS dataset
+ in the previous lessons regarding the loading of MNIST digit dataset
  and the computation of the centroids using Git tools for shared development.
 
-#### The goal is to pass the automated tests setup in the Gitlab project for `develop` branch and push to `production`.
+#### The goal is to pass the automated tests in the project for the `main` branch and push to `release`.
 
 If all the functions have been correctly implemented, you will find a `passed` green badge
- under the CI/CD -> Pipelines menu on the left of the gitlab.com project page.
-If the tests are failing, a red `failed` badge will be displayed in the same page.
+ under GitHub Actions. If the tests are failing, a red `failed` badge will be displayed.
 
 In particular each group must develop:
 - `load_mnist(csv_filename)`, load the MNIST dataset (available in `data/mnist_data.csv`)
@@ -32,32 +31,32 @@ Change the `requirements.txt` file by adding the name of any new dependency if n
 ### Workflow details:
 1. The team leader *only* should fork the current project and provide the 
  repository url to other team members. The team leader must also add other team members
- to his project using the Settings -> Members menu of the gitlab project. Members should
+ to his project using the Settings -> Members menu of the GitHub project. Members should
  be added with **Maintainer** role. All team members can now clone the project locally.
 2. Each group should **discuss** how to develop each function
- (example: if any extra function is needed, what should return, ...).
+ (example: if any extra function is needed, what it should return, ...).
 3. Each group should then **discuss** which function each team member should implement.
 4. Development of each function must be done in a **specific branch**,
  which must be pushed to the remote after creation.
- **No direct commits into the `develop` branch**
+ **No direct commits into the `main` branch should be done**
 5. Each team member is suggested to commit local changes to remote
  as often as possible, so that other team members can see the progress
- on the code via the gitlab.com project page.
+ on the code via the project page.
 6. During the development, team members are encouraged to discuss code
  implementation and possible problems.
 7. If needed, changes from other feature branches can be merged into a specific feature branch.
  Use any Git tool needed to correctly integrate the changes from multiple branches.
 8. After the development of a specific feature has been completed, 
- the relative branch should be merged into `develop`.
-9. The CI/CD -> Pipelines should now be consulted to see the result of the automated tests.
- Depending on the load of the test runners of gitlab.com, the pipeline could show 
+ the relative branch should be merged into `main`.
+9. The Activities should now be consulted to see the result of the automated tests.
+ Depending on the load of the test runners, the pipeline could show 
  the `pending` status for *quite a while*. Just wait until a runner picked the job.
- As an alternative, the test script can be manually run by calling `PYTHONPATH=. python tests/test.py`.
-10. If any change to the code is necessary, should be developed in the branch
+ Recall that the test scripts can be also run locally.
+10. If any change to the code is necessary, it should be developed in the branch
  relative to the specific feature and merged into master to see if tests are then passing.
-11. When all tests are passing, from branch `develop` the `production` branch should be created.
- The CI/CD tests will be run for `production` branch too and **must succeed**.
-12. When all tests are passing **for `production`** branch, the last commit in that branch
+11. When all tests are passing, the `release` branch should be created from the branch `main`.
+ The tests will be run for the `release` branch too and **must succeed**.
+12. When all tests are passing **for the `release`** branch, the last commit in that branch
  should be tagged as `v1.0`.
 
 
