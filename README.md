@@ -15,8 +15,8 @@ In particular each group must develop:
 - `NMC.fit(x, y)`, compute the average centroid for each class for training set
 - `NMC.predict(x)`, predict the class of each sample
 
-**All functions must be added to the `fun_utils.py` script**,
- which already contains the signature of the required functions.
+**All functions must be added to the `fun_utils.py` and `nmc.py` files**,
+ which already contain the signature of the required functions.
  
 Tests are available inside `tests/test.py` script.
 
