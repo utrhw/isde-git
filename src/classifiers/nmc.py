@@ -70,4 +70,22 @@ class NMC(object):
         return softmax(sim) if softmax_scaling else sim
 
     def predict(self, xts):
-        pass
+        """_summary_
+
+        Args:
+            xts (_np.array_): _description_
+
+        Raises:
+            ValueError: _description_
+
+        Returns:
+            _np.array_: _description_
+        """
+        if self._centroids is None:
+            raise ValueError("Model not fitted yet.")
+        
+        scores = self.decision_function(xts, softmax_scaling=True)
+        yts_pred = np.argmax(scores, axis=1)
+        
+        return yts_pred
+
