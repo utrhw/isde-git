@@ -1,6 +1,18 @@
 import numpy as np
 from sklearn.metrics.pairwise import euclidean_distances
 
+def softmax(x):
+    """_returns softmax of input array x_
+
+    Args:
+        x (_float_): _description_
+
+    Returns:
+        _float_: _description_
+    """
+    e_x = np.exp(x-np.max(x))
+    return e_x/e_x.sum(axis=1, keepdims=True)
+
 
 class NMC(object):
     """
