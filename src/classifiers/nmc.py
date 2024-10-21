@@ -1,5 +1,5 @@
 import numpy as np
-from sklearn.metrics.pairwise import euclidean_distances
+from sklearn.metrics.pairwise import pairwise_distances
 
 def softmax(x):
     """_returns softmax of input array x_
@@ -48,6 +48,26 @@ class NMC(object):
 
     def fit(self, xtr, ytr):
         pass
+
+    def decision_function(self,xts, softmax_scaling=False):
+        """_summary_
+
+        Args:
+            xts (_np.array_): _description_
+            softmax_scaling (bool, optional): _description_. Defaults to False.
+
+        Raises:
+            ValueError: _description_
+
+        Returns:
+            _np.array_: _description_
+        """
+        if self.centroids is None:
+            raise ValueError("Model not fitted yet.")
+        
+        dist = pairwise_distances(xts, self.centroids)
+        sim = 1/(1e-4+dist)
+        return softmax(sim) if softmax_scaling else sim
 
     def predict(self, xts):
         pass
